@@ -76,51 +76,26 @@ router.post("/register", (req, res) => {
     // Checking to make sure value is not left blank, otherwise it will use a regular expression to validate.
     if(req.body.fname.trim() === "") {
         errors.push("First name cannot be blank");
-    } else {
-        // Validate the first name for incorrect format.
-        if(!/^[a-zA-Z0-9_.+-]+$/.test(req.body.fname)) {
-            errors.push("Invalid first name");
-        }
     }
 
     // Checking to make sure value is not left blank, otherwise it will use a regular expression to validate.
     if(req.body.lname.trim() === "") {
         errors.push("Last name cannot be blank");
-    } else {
-        // Validate the last name for incorrect format.
-        if(!/^[a-zA-Z0-9_.+-]+$/.test(req.body.lname)) {
-            errors.push("Invalid last name");
-        }
     }
 
     // Checking to make sure value is not left blank, otherwise it will use a regular expression to validate.
     if(req.body.address.trim() === "") {
         errors.push("Address cannot be blank");
-    } else {
-        // Validate the address for incorrect format.
-        if(!/[A-Za-z0-9'\.\-\s\,]+$/.test(req.body.address)) {
-            errors.push("Invalid address");
-        }
     }
 
     // Checking to make sure value is not left blank, otherwise it will use a regular expression to validate.
     if(req.body.city.trim() === "") {
         errors.push("City cannot be blank");
-    } else {
-        // Validate the city for incorrect format.
-        if(!/^[a-zA-Z0-9_.+-]+$/.test(req.body.city)) {
-            errors.push("Invalid city");
-        }
     }
 
     // Checking to make sure value is not left blank, otherwise it will use a regular expression to validate.
     if(req.body.state.trim() === "") {
         errors.push("State cannot be blank");
-    } else {
-        // Validate the state for incorrect format.
-        if(!/^((A[LKSZR])|(C[AOT])|(D[EC])|(F[ML])|(G[AU])|(HI)|(I[DLNA])|(K[SY])|(LA)|(M[EHDAINSOT])|(N[EVHJMYCD])|(MP)|(O[HKR]) |(P[WAR])|(RI)|(S[CD])|(T[NX])|(UT)|(V[TIA])|(W[AVIY]))+$/.test(req.body.state)) {
-            errors.push("Invalid state");
-        }
     }
 
     // Checking to make sure value is not left blank, otherwise it will use a regular expression to validate.
@@ -151,11 +126,42 @@ router.post("/register", (req, res) => {
     // Checking to make sure value is not left blank, otherwise it will use a regular expression to validate.
     if(req.body.bio.trim() === "") {
         errors.push("Bio cannot be blank");
-    } else {
-        // Validate the bio for incorrect format.
-        if(!/^[a-zA-Z0-9_.+-]+$/.test(req.body.bio)) {
-            errors.push("Invalid bio");
-        }
+    }
+
+    // Regular Expression Validation
+    // Validate the first name for incorrect format.
+    if(!/^[a-zA-Z0-9_.+-]+$/.test(req.body.fname)) {
+        errors.push("Invalid first name");
+    }
+
+    // Validate the last name for incorrect format.
+    if(!/^[a-zA-Z0-9_.+-]+$/.test(req.body.lname)) {
+        errors.push("Invalid last name");
+    }
+
+    // Validate the address for incorrect format.
+    if(!/^\d+\s[A-z]+\s[A-z]+/.test(req.body.address)) {
+        errors.push("Invalid address");
+    }
+
+    // Validate the city for incorrect format.
+    if(!/^[a-zA-Z0-9_.+-]+$/.test(req.body.city)) {
+        errors.push("Invalid city");
+    }
+
+    // Validate the state for incorrect format.
+    if(!/^((A[LKSZR])|(C[AOT])|(D[EC])|(F[ML])|(G[AU])|(HI)|(I[DLNA])|(K[SY])|(LA)|(M[EHDAINSOT])|(N[EVHJMYCD])|(MP)|(O[HKR]) |(P[WAR])|(RI)|(S[CD])|(T[NX])|(UT)|(V[TIA])|(W[AVIY]))+$/.test(req.body.state)) {
+        errors.push("Invalid state");
+    }
+
+    // Validate the zip for incorrect format.
+    if(!/^\d{5}(?:[-\s]\d{4})?$/.test(req.body.zip)) {
+        errors.push("Invalid zip");
+    }
+
+    // Validate the bio for incorrect format.
+    if(!/^[a-zA-Z0-9_.+-]+$/.test(req.body.bio)) {
+        errors.push("Invalid bio");
     }
 
     // Setting the results for failed or success
