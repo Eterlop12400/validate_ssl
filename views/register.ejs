@@ -38,30 +38,15 @@
                 <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
             </div>
         </header>
-        <div style="z-index: 12;
-        display: block;
-        text-align: right;
-        background-color: #333a40;
-        margin-right: 0rem;
-        padding-right: 1.25rem;
-        color: grey;
-        width: 14rem;
-        margin-top: 3.5rem;
-        padding-top: .5rem;
-        right: 1rem;
-        border-radius: .75rem;
-        padding: .75rem;
-        font-size: 1rem;
-        ">
-            <form action="login" method="post">
-                <input type="email" name="email" placeholder="email"/>
-                <input type="password" name="password" placeholder="password"/>
-                <div style="padding-top: .4rem;">
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
-        </div>
-
+        <!--  Registration Form  -->
+        <main class="pb-3">
+            <% if (typeof(regErr) != "undefined"){%>
+                <% regErr.forEach((error) => { %>
+                <br/><span style="color:red; font-weight: bolder"><%=error%></span>
+                <%})%>
+            <%}%>
+            <%- include("includes/register_form") %>
+        </main>
         <!-- Footer-->
         <footer class="footer text-center">
             <div class="container">
