@@ -101,11 +101,6 @@ router.post("/register", (req, res) => {
     // Checking to make sure value is not left blank, otherwise it will use a regular expression to validate.
     if(req.body.zip.trim() === "") {
         errors.push("Zip cannot be blank");
-    } else {
-        // Validate the zip for incorrect format.
-        if(!/(^\d{5}$)|(^\d{9}$)|(^\d{5}-\d{4}$)+$/.test(req.body.zip)) {
-            errors.push("Invalid zip");
-        }
     }
 
     // Checking to make sure value is not left to the default value of 'select'.
