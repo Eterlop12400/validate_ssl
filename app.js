@@ -155,7 +155,7 @@ router.post("/register", (req, res) => {
     }
 
     // Validate the bio for incorrect format.
-    if(!/^[a-zA-Z0-9_.+-]+$/.test(req.body.bio)) {
+    if(!/^[a-zA-Z0-9?$@#()'!,+\-=_:.&€£*%\s]+$/.test(req.body.bio)) {
         errors.push("Invalid bio");
     }
 
